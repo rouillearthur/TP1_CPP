@@ -1,0 +1,10 @@
+#ifndef __SHOP_H__
+#define __SHOP_H__
+
+struct Item {
+    char name[30];
+    float price;
+};
+
+
+#endif
