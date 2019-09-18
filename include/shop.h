@@ -8,8 +8,8 @@ struct Item {
 
 double readPositiveFloat();
 
-double readPositiveFloat(double* pInputPrice);
+void readPositiveFloat(double* pInputPrice);
 
-double readPositiveFloat(double inputPrice);
+void readPositiveFloat(double inputPrice);
 
 #endif
