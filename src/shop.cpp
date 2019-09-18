@@ -46,12 +46,13 @@ void readPositiveFloat(double inputPrice) {
 int main() {
     double price = 0.0;
     double inputPrice = 0.0;
+    double* pInputPrice=&inputPrice;
+    
     // Read number
     price = readPositiveFloat();
     cout << "(Read number) The price is : " << price << "€" << endl;
 
     // Address
-    double* pInputPrice=&inputPrice;
     readPositiveFloat(pInputPrice);
     cout << "(Address) The price is : " << *pInputPrice << "€" << endl;
 
