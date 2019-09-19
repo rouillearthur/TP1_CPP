@@ -92,12 +92,44 @@ void readItem(Item item) {
   cout << item.name << " (" << item.price << "€)" << endl;
 }
 
-void readItems(Item *items) { 
+void readItems(Item *items, int lenght) { 
   cout << "Item array :" << endl;
-  for (int i=0;i<(sizeof(items)/sizeof(*items));i++) {
+  for (int i=0;i<lenght;i++) {
     cout << "-> ";
     readItem(items[i]);
   }
+}
+
+void swapPrice(Item &i1, Item &i2) {
+  double &a=i1.price;
+  double &b=i2.price;
+  a=a+b;
+  b=a-b;
+  a=a-b;
+}
+
+Item cheaperItem(Item *items, int lenght) {
+  int itemIndex=0;
+  double minPrice=items[0].price;
+  for(int i=1;i<lenght;i++) {
+    if(items[i].price<minPrice) {
+      itemIndex=i;
+      minPrice=items[i].price;
+    }
+  }
+  return items[itemIndex];
+}
+
+Item mostExpensiveItem(Item *items, int lenght) {
+  int itemIndex;
+  double maxPrice=0.0;
+  for(int i=0;i<lenght;i++) {
+    if(items[i].price>maxPrice) {
+      itemIndex=i;
+      maxPrice=items[i].price;
+    }
+  }
+  return items[itemIndex];
 }
 
 int main() {
@@ -125,7 +157,14 @@ int main() {
   Item item = setItem();
   cout << item.name << " (" << item.price << "€)" << endl;
   */
+  /*
+ 
+  readItems(items,3);
+*/
+
+  //swapPrice(i1,i2);
   Item *items = createItemArray(items,3);
-  readItems(items);
+  readItem(mostExpensiveItem(items,3));
+  readItem(cheaperItem(items,3));
 }
 
