@@ -108,7 +108,7 @@ void swapPrice(Item &i1, Item &i2) {
   a=a-b;
 }
 
-Item cheaperItem(Item *items, int lenght) {
+Item &cheaperItem(Item *items, int lenght) {
   int itemIndex=0;
   double minPrice=items[0].price;
   for(int i=1;i<lenght;i++) {
@@ -120,7 +120,7 @@ Item cheaperItem(Item *items, int lenght) {
   return items[itemIndex];
 }
 
-Item mostExpensiveItem(Item *items, int lenght) {
+Item &mostExpensiveItem(Item *items, int lenght) {
   int itemIndex;
   double maxPrice=0.0;
   for(int i=0;i<lenght;i++) {
@@ -130,6 +130,17 @@ Item mostExpensiveItem(Item *items, int lenght) {
     }
   }
   return items[itemIndex];
+}
+
+
+void joke(Item *items, int lenght) {
+  swapPrice(cheaperItem(items,lenght),mostExpensiveItem(items,lenght));
+  readItems(items,lenght);
+  
+}
+
+void joke2(Item *items, int lenght) {
+  
 }
 
 int main() {
@@ -164,7 +175,7 @@ int main() {
 
   //swapPrice(i1,i2);
   Item *items = createItemArray(items,3);
-  readItem(mostExpensiveItem(items,3));
-  readItem(cheaperItem(items,3));
+  readItems(items,3);
+  joke(items,3);
 }
 
