@@ -140,7 +140,12 @@ void joke(Item *items, int lenght) {
 }
 
 void joke2(Item *items, int lenght) {
-  
+  Item cheaper=cheaperItem(items,lenght);
+  Item mostExpensive=mostExpensiveItem(items,lenght);
+
+  double &tmp=cheaper.price;
+  cheaper.price=mostExpensive.price;
+  mostExpensive.price=tmp;
 }
 
 int main() {
