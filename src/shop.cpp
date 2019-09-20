@@ -64,7 +64,7 @@ void readPositiveFloat(double & inputPrice) {
    
 }
 
-Item setItem() {
+Item readItem() {
   Item item;
   cout << "Please enter item name (30 char max.) : ";
   cin >> item.name;
@@ -83,24 +83,24 @@ Item setItem() {
 Item* createItemArray(Item *items, int lenght) {
   items = new Item[lenght];
   for (int i=0;i<lenght;i++) {
-    items[i]=setItem();
+    items[i]=readItem();
   }
   return items;
 }
 
-void readItem(Item item) {
+void printItem(Item item) {
   cout << item.name << " (" << item.price << "€)" << endl;
 }
 
-void readItems(Item *items, int lenght) { 
+void printItems(Item *items, int lenght) { 
   cout << "Item array :" << endl;
   for (int i=0;i<lenght;i++) {
     cout << "-> ";
-    readItem(items[i]);
+    printItem(items[i]);
   }
 }
 
-void swapPrice(Item &i1, Item &i2) {
+void swapPrices(Item &i1, Item &i2) {
   double &a=i1.price;
   double &b=i2.price;
   a=a+b;
@@ -134,22 +134,26 @@ Item &mostExpensiveItem(Item *items, int lenght) {
 
 
 void joke(Item *items, int lenght) {
-  swapPrice(cheaperItem(items,lenght),mostExpensiveItem(items,lenght));
-  readItems(items,lenght);
+  swapPrices(cheaperItem(items,lenght),mostExpensiveItem(items,lenght));
+  printItems(items,lenght);
   
 }
 
 void joke2(Item *items, int lenght) {
-  Item cheaper=cheaperItem(items,lenght);
-  Item mostExpensive=mostExpensiveItem(items,lenght);
+  Item &cheaper=cheaperItem(items,lenght);
+  Item &mostExpensive=mostExpensiveItem(items,lenght);
 
-  double &tmp=cheaper.price;
+  double tmp=cheaper.price;
   cheaper.price=mostExpensive.price;
   mostExpensive.price=tmp;
+
+  printItems(items,lenght);
 }
 
 int main() {
-  /*  double price = 0.0;
+/*  
+// I - PLAYING WITH DIFFERENT ARGUMENT TYPES
+    double price = 0.0;
     double inputPrice = 0.0;
     double* pInputPrice=&inputPrice;
     
@@ -169,18 +173,16 @@ int main() {
     readPositiveFloat(inputPrice);
     cout << "(Reference) The price is : " << inputPrice << "€" << endl;
 */
-  /*
-  Item item = setItem();
-  cout << item.name << " (" << item.price << "€)" << endl;
-  */
-  /*
- 
-  readItems(items,3);
-*/
 
-  //swapPrice(i1,i2);
-  Item *items = createItemArray(items,3);
-  readItems(items,3);
-  joke(items,3);
+/*
+// II - LET'S MAKE A JOKE 
+    Item *items = createItemArray(items,3);
+    printItems(items,3);
+    joke(items,3);
+    //joke2(items,3);
+*/  
+
+// III - REFERENCES AND RETURN TYPE
+    swapPrices(readItem(),readItem());
 }
 
