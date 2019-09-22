@@ -8,7 +8,7 @@ double readPositiveFloat() {
     cout << "Price : ";
     cin >> price;
 
-    while(cin.fail() || price<=0.0) {
+    while(cin.fail() || price <= 0.0) {
 	cin.clear();
 	cin.ignore();
 	cout << "Please enter a positive non-nul price : ";
@@ -23,7 +23,7 @@ void readPositiveFloat(double* pInputPrice) {
     double price;
      cout << "Price : ";
     cin >> price;
-    while(cin.fail() || price<=0.0) {
+    while(cin.fail() || price <= 0.0) {
 	cin.clear();
 	cin.ignore();
 	cout << "Please enter a positive non-nul price : ";
@@ -46,7 +46,7 @@ void Ref::readPositiveFloat(double inputPrice) {
 	cin >> price;
 	cout << endl;
     }
-    inputPrice=price;
+    inputPrice = price;
 }
 
 void readPositiveFloat(double & inputPrice) {
@@ -60,7 +60,7 @@ void readPositiveFloat(double & inputPrice) {
 	cin >> price;
 	cout << endl;
     }
-    inputPrice=price;
+    inputPrice = price;
    
 }
 
@@ -80,10 +80,10 @@ Item readItem() {
   return item;
 }
 
-Item* createItemArray(Item *items, int lenght) {
-  items = new Item[lenght];
-  for (int i=0;i<lenght;i++) {
-    items[i]=readItem();
+Item* createItemArray(Item *items, int length) {
+  items = new Item[length];
+  for (int i = 0;i<length;i++) {
+    items[i] = readItem();
   }
   return items;
 }
@@ -92,70 +92,75 @@ void printItem(Item item) {
   cout << item.name << " (" << item.price << "€)" << endl;
 }
 
-void printItems(Item *items, int lenght) { 
+void printItems(Item *items, int length) { 
   cout << "Item array :" << endl;
-  for (int i=0;i<lenght;i++) {
+  for (int i = 0;i<length;i++) {
     cout << "-> ";
     printItem(items[i]);
   }
 }
 
 void swapPrices(Item &i1, Item &i2) {
-  double &a=i1.price;
-  double &b=i2.price;
-  a=a+b;
-  b=a-b;
-  a=a-b;
+  double &a = i1.price;
+  double &b = i2.price;
+  a = a+b;
+  b = a-b;
+  a = a-b;
 }
 
-Item &cheaperItem(Item *items, int lenght) {
-  int itemIndex=0;
-  double minPrice=items[0].price;
-  for(int i=1;i<lenght;i++) {
+Item &cheaperItem(Item *items, int length) {
+  int itemIndex = 0;
+  double minPrice = items[0].price;
+  for(int i = 1;i<length;i++) {
     if(items[i].price<minPrice) {
-      itemIndex=i;
-      minPrice=items[i].price;
+      itemIndex = i;
+      minPrice = items[i].price;
     }
   }
   return items[itemIndex];
 }
 
-Item &mostExpensiveItem(Item *items, int lenght) {
+Item &mostExpensiveItem(Item *items, int length) {
   int itemIndex;
-  double maxPrice=0.0;
-  for(int i=0;i<lenght;i++) {
+  double maxPrice = 0.0;
+  for(int i = 0;i<length;i++) {
     if(items[i].price>maxPrice) {
-      itemIndex=i;
-      maxPrice=items[i].price;
+      itemIndex = i;
+      maxPrice = items[i].price;
     }
   }
   return items[itemIndex];
 }
 
 
-void joke(Item *items, int lenght) {
-  swapPrices(cheaperItem(items,lenght),mostExpensiveItem(items,lenght));
-  printItems(items,lenght);
+void joke(Item *items, int length) {
+  swapPrices(cheaperItem(items, length), mostExpensiveItem(items,length));
+  printItems(items,length);
   
 }
 
-void joke2(Item *items, int lenght) {
-  Item &cheaper=cheaperItem(items,lenght);
-  Item &mostExpensive=mostExpensiveItem(items,lenght);
+void joke2(Item *items, int length) {
+  Item &cheaper = cheaperItem(items,length);
+  Item &mostExpensive = mostExpensiveItem(items,length);
 
-  double tmp=cheaper.price;
-  cheaper.price=mostExpensive.price;
-  mostExpensive.price=tmp;
+  double tmp = cheaper.price;
+  cheaper.price = mostExpensive.price;
+  mostExpensive.price = tmp;
 
-  printItems(items,lenght);
+  printItems(items,length);
+}
+
+bool logical_gate(bool & a, bool & b) {
+    return (a || b); // Logical function AND
 }
 
 int main() {
-/*  
+
+/*
 // I - PLAYING WITH DIFFERENT ARGUMENT TYPES
     double price = 0.0;
     double inputPrice = 0.0;
-    double* pInputPrice=&inputPrice;
+    double* pInputPrice = &inputPrice;
     
     // Read number
     price = readPositiveFloat();
@@ -182,7 +187,11 @@ int main() {
     //joke2(items,3);
 */  
 
+/*
 // III - REFERENCES AND RETURN TYPE
     swapPrices(readItem(),readItem());
+*/
+
+if (logical_gate(true,true)) { cout << "OK" << endl; }    
 }
 

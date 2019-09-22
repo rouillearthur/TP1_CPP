@@ -10,20 +10,23 @@ struct Item {
 namespace Ref {
   void readPositiveFloat(double inputPrice);
 }
+
 double readPositiveFloat();
 void readPositiveFloat(double* pInputPrice);
 void readPositiveFloat(double & inputPrice);
 
-Item* createItemArray(Item *item, int lenght);
+Item* createItemArray(Item *item, int length);
 Item readItem();
 void printItem(Item item);
-void printItems(Item *items, int lenght);
+void printItems(Item *items, int length);
 
 void swapPrices(Item &i1, Item &i2);
-Item &cheaperItem(Item *items, int lenght);
-Item &mostExpensiveItem(Item *items, int lenght);
-void joke(Item *items, int lenght);
-void joke2(Item *items, int lenght);
+Item &cheaperItem(Item *items, int length);
+Item &mostExpensiveItem(Item *items, int length);
+void joke(Item *items, int length);
+void joke2(Item *items, int length);
+
+bool logical_gate(bool & a, bool & b);
 
 #endif
 
